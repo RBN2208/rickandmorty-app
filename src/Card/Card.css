@@ -1,4 +1,15 @@
-.Card{
-    padding: 15px;
-    background-color: cornflowerblue;
+.Card {
+  display: grid;
+  grid-template-columns: auto 150px;
+  padding: 15px;
+  background-color: cornflowerblue;
+}
+
+.Card__subinfo {
+  font-weight: normal;
+  font-size: 0.7em;
+}
+.Card__img {
+  width: 150px;
+  border-radius: 50%;
 }
