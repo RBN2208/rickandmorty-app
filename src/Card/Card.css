@@ -1,8 +1,8 @@
 .Card {
   display: grid;
-  grid-template-columns: auto 150px;
   padding: 15px;
   background-color: cornflowerblue;
+  box-shadow: 3px 4px 9px black;
 }
 
 .Card__subinfo {
