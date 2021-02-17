@@ -1,6 +1,9 @@
 import './Card.css'
+import React from 'react'
 
-export default function Card({ name, species, image }) {
+export default function Card({ name, species, image, origin, location }) {
+  const [isTextVisible, setIsTextVisible] = React.useState(false)
+
   return (
     <section className="Card">
       <h2>
@@ -8,6 +11,21 @@ export default function Card({ name, species, image }) {
         {name}
       </h2>
       <img className="Card__img" src={image} alt="" />
+      <button
+        className="Card__button"
+        onClick={() => {
+          setIsTextVisible(!isTextVisible)
+        }}
+      >
+        {isTextVisible ? 'Show less Details' : 'Show more Details'}
+      </button>
+
+      {isTextVisible && (
+        <div className="Card__infobox">
+          <p>Origin: {origin}</p>
+          <p>Location: {location}</p>
+        </div>
+      )}
     </section>
   )
 }
