@@ -32,5 +32,11 @@
   background: azure;
   box-shadow: 3px 4px 10px black;
   border-radius: 10px;
-  padding: 5px;
+  padding: 5px 15px;
+  text-align: left;
+  transition: all 5s;
+}
+
+.Card__infobox--top {
+  font-weight: bold;
 }

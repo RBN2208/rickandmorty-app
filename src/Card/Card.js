@@ -21,9 +21,15 @@ export default function Card({ name, species, image, origin, location }) {
       </button>
 
       {isTextVisible && (
-        <div className="Card__infobox">
-          <p>Origin: {origin}</p>
-          <p>Location: {location}</p>
+        <div className="Card__infobox scale-up-ver-top">
+          <p>
+            <span className="Card__infobox--top">Origin:</span> {origin}
+            <br />
+            <span className="Card__infobox--top">Species:</span> {species}
+            <br />
+            <span className="Card__infobox--top">Location:</span> {location}
+            <br />
+          </p>
         </div>
       )}
     </section>
