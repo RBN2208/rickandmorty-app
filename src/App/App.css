@@ -1,5 +1,9 @@
 .App {
+  background-color: cadetblue;
+}
+
+.Content {
+  padding: 15px;
   display: grid;
   gap: 15px;
-  padding: 15px;
 }

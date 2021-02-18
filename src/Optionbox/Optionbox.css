@@ -1,0 +1,15 @@
+.Optionbox {
+  display: grid;
+}
+
+.Optionbox__button {
+  appearance: none;
+  padding: 10px;
+  color: white;
+  background-color: darkmagenta;
+  border: none;
+}
+
+.Optionbox__options {
+  display: grid;
+}

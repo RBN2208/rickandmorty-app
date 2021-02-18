@@ -1,0 +1,10 @@
+.Appheader {
+  box-shadow: 0 0 10px black;
+  padding: 10px;
+  background-color: darkcyan;
+}
+
+.Appheader img {
+  width: 100%;
+  filter: drop-shadow(0 0 8px black);
+}
