@@ -2,21 +2,26 @@ import './Optionbox.css'
 import React, { useState } from 'react'
 import Searchbar from '../Searchbar/Searchbar'
 
-export default function Optionbox({ userInput, setUserInput }) {
-  const [isBoxVisible, setIsBoxVisible] = useState(false)
+export default function Optionbox({
+  userInput,
+  setUserInput,
+  filteredSpecies,
+  setFilteredSpecies,
+}) {
+  const [isOptionsBoxVisible, setIsOptionsBoxVisible] = useState(false)
 
   return (
     <div className="Optionbox">
       <button
         className="Optionbox__button"
         onClick={() => {
-          setIsBoxVisible(!isBoxVisible)
+          setIsOptionsBoxVisible(!isOptionsBoxVisible)
         }}
       >
-        {isBoxVisible ? 'Hide Options' : 'Show Options'}
+        {isOptionsBoxVisible ? 'Hide Options' : 'Show Options'}
       </button>
 
-      {isBoxVisible && (
+      {isOptionsBoxVisible && (
         <div className="Optionbox__options">
           <label>
             <Searchbar userInput={userInput} setUserInput={setUserInput} />
@@ -24,7 +29,12 @@ export default function Optionbox({ userInput, setUserInput }) {
           </label>
           <label>
             Species:
-            <button>Human</button>
+            <button
+              onClick={() => setFilteredSpecies('Human')}
+              disabled={filteredSpecies === 'Human'}
+            >
+              Humans
+            </button>
             <button>Alien</button>
             <button>All</button>
           </label>

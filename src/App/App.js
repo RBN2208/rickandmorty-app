@@ -8,17 +8,27 @@ import { useState } from 'react'
 export default function App() {
   const apiData = data.results
   const [userInput, setUserInput] = useState('')
+  const [filteredSpecies, setFilteredSpecies] = useState('all')
 
   return (
     <div className="App">
       <Appheader />
+      <Optionbox
+        userInput={userInput}
+        setUserInput={setUserInput}
+        filteredSpecies={filteredSpecies}
+        setFilteredSpecies={setFilteredSpecies}
+      />
       <main className="Content">
-        <Optionbox userInput={userInput} setUserInput={setUserInput} />
-
         {apiData
           .filter(character =>
             character.name.toLowerCase().includes(userInput.toLowerCase())
           )
+          .filter(
+            character =>
+              filteredSpecies === 'all' || character.species === filteredSpecies
+          )
+
           .map(({ id, name, species, image, origin, location }) => (
             <Card
               key={id}
