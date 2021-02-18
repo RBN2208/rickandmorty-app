@@ -1,10 +1,12 @@
 .Appheader {
+  display: grid;
+  justify-items: center;
   box-shadow: 0 0 10px black;
   padding: 10px;
   background-color: darkcyan;
 }
 
 .Appheader img {
-  width: 100%;
+  width: 75%;
   filter: drop-shadow(0 0 8px black);
 }

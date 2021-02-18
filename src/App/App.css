@@ -1,9 +1,16 @@
 .App {
-  background-color: cadetblue;
+  display: grid;
+  grid-template-rows: 110px auto;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .Content {
   padding: 15px;
   display: grid;
   gap: 15px;
+  overflow-y: scroll;
 }

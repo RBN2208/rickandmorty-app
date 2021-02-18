@@ -1,29 +1,40 @@
 import './Optionbox.css'
-import React from 'react'
+import React, { useState } from 'react'
+import Searchbar from '../Searchbar/Searchbar'
 
-export default function Optionbox() {
-  const [isBoxVisible, setIsBoxVisible] = React.useState(false)
+export default function Optionbox({
+  userInput,
+  setUserInput,
+  filteredSpecies,
+  setFilteredSpecies,
+}) {
+  const [isOptionsBoxVisible, setIsOptionsBoxVisible] = useState(false)
 
   return (
     <div className="Optionbox">
       <button
         className="Optionbox__button"
         onClick={() => {
-          setIsBoxVisible(!isBoxVisible)
+          setIsOptionsBoxVisible(!isOptionsBoxVisible)
         }}
       >
-        {isBoxVisible ? 'Hide Options' : 'Show Options'}
+        {isOptionsBoxVisible ? 'Hide Options' : 'Show Options'}
       </button>
 
-      {isBoxVisible && (
+      {isOptionsBoxVisible && (
         <div className="Optionbox__options">
           <label>
-            <input placeholder="search for a name" />
+            <Searchbar userInput={userInput} setUserInput={setUserInput} />
             <button>Favorites</button>
           </label>
           <label>
             Species:
-            <button>Human</button>
+            <button
+              onClick={() => setFilteredSpecies('Human')}
+              disabled={filteredSpecies === 'Human'}
+            >
+              Humans
+            </button>
             <button>Alien</button>
             <button>All</button>
           </label>
@@ -36,3 +47,11 @@ export default function Optionbox() {
     </div>
   )
 }
+/*
+function liveSearch(searchedValue) {
+  const filterSearch = characters.filter(character =>
+    character.name.toLowerCase().includes(searchedValue.toLowerCase())
+  )
+  setCharacters(filterSearch)
+}
+*/
