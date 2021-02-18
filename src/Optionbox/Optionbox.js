@@ -1,8 +1,9 @@
 import './Optionbox.css'
-import React from 'react'
+import React, { useState } from 'react'
+import Searchbar from '../Searchbar/Searchbar'
 
-export default function Optionbox() {
-  const [isBoxVisible, setIsBoxVisible] = React.useState(false)
+export default function Optionbox({ userInput, setUserInput }) {
+  const [isBoxVisible, setIsBoxVisible] = useState(false)
 
   return (
     <div className="Optionbox">
@@ -18,7 +19,7 @@ export default function Optionbox() {
       {isBoxVisible && (
         <div className="Optionbox__options">
           <label>
-            <input placeholder="search for a name" />
+            <Searchbar userInput={userInput} setUserInput={setUserInput} />
             <button>Favorites</button>
           </label>
           <label>
@@ -36,3 +37,11 @@ export default function Optionbox() {
     </div>
   )
 }
+/*
+function liveSearch(searchedValue) {
+  const filterSearch = characters.filter(character =>
+    character.name.toLowerCase().includes(searchedValue.toLowerCase())
+  )
+  setCharacters(filterSearch)
+}
+*/
