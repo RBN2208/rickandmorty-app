@@ -6,10 +6,6 @@ export default function Card({ name, species, image, origin, location }) {
 
   return (
     <section className="Card">
-      {/*  <h2>
-          {species === 'Human' ? '👤' : '👽'}
-          {name}
-        </h2>*/}
       <button
         className="Card__button"
         onClick={() => {
