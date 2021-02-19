@@ -35,12 +35,21 @@ export default function Optionbox({
             >
               Humans
             </button>
-            <button>Alien</button>
-            <button>All</button>
+            <button
+              onClick={() => setFilteredSpecies('Alien')}
+              disabled={filteredSpecies === 'Alien'}
+            >
+              Alien
+            </button>
+            <button
+              onClick={() => setFilteredSpecies('all')}
+              disabled={filteredSpecies === 'all'}
+            >
+              All
+            </button>
           </label>
           <label>
             <button>Random Character</button>
-            <button>All Characters</button>
           </label>
         </div>
       )}

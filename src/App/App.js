@@ -4,11 +4,12 @@ import './App.css'
 import Optionbox from '../Optionbox/Optionbox'
 import { useState, useEffect } from 'react'
 import getAllCharacters from '../services/getAllCharacters'
+import liveSearch from '../services/liveSearch'
+import filterSpecies from '../services/filterSpecies'
 
 export default function App() {
   const [userInput, setUserInput] = useState('')
   const [filteredSpecies, setFilteredSpecies] = useState('all')
-
   const [characters, setCharacters] = useState([])
 
   useEffect(() => {
@@ -29,13 +30,8 @@ export default function App() {
       />
       <main className="Content">
         {characters
-          .filter(character =>
-            character.name.toLowerCase().includes(userInput.toLowerCase())
-          )
-          .filter(
-            character =>
-              filteredSpecies === 'all' || character.species === filteredSpecies
-          )
+          .filter(liveSearch(userInput))
+          .filter(filterSpecies(filteredSpecies))
           .map(({ id, name, species, image, origin, location }) => (
             <Card
               key={id}
@@ -50,3 +46,13 @@ export default function App() {
     </div>
   )
 }
+
+/*
+filter(character =>
+            character.name.toLowerCase().includes(userInput.toLowerCase())
+          )
+
+          character =>
+              filteredSpecies === 'all' || character.species === filteredSpecies
+          )
+          */
