@@ -9,6 +9,7 @@ export default function Optionbox({
   setFilteredSpecies,
 }) {
   const [isOptionsBoxVisible, setIsOptionsBoxVisible] = useState(false)
+  // const [isActive, setIsActive] = useState(false)
 
   return (
     <div className="Optionbox">
@@ -23,36 +24,53 @@ export default function Optionbox({
 
       {isOptionsBoxVisible && (
         <div className="Optionbox__options">
-          <label>
-            <Searchbar userInput={userInput} setUserInput={setUserInput} />
-            <button>Favorites</button>
-          </label>
-          <label>
-            Species:
-            <button
-              onClick={() => setFilteredSpecies('Human')}
-              disabled={filteredSpecies === 'Human'}
-            >
-              Humans
-            </button>
-            <button
-              onClick={() => setFilteredSpecies('Alien')}
-              disabled={filteredSpecies === 'Alien'}
-            >
-              Alien
-            </button>
-            <button
-              onClick={() => setFilteredSpecies('all')}
-              disabled={filteredSpecies === 'all'}
-            >
-              All
-            </button>
-          </label>
-          <label>
-            <button>Random Character</button>
-          </label>
+          <Searchbar userInput={userInput} setUserInput={setUserInput} />
+          <button className="Optionbox__optionsbutton">Favorites</button>
+          Filter:
+          <button
+            className={
+              filteredSpecies === 'Human'
+                ? 'Optionbox__optionsbutton active'
+                : 'Optionbox__optionsbutton'
+            }
+            onClick={
+              () => setFilteredSpecies('Human') // , setIsActive(!isActive))
+            }
+            // disabled={filteredSpecies === 'Human'}
+          >
+            Humans
+          </button>
+          <button
+            className={
+              filteredSpecies === 'Alien'
+                ? 'Optionbox__optionsbutton active'
+                : 'Optionbox__optionsbutton'
+            }
+            onClick={() => setFilteredSpecies('Alien')}
+            // disabled={filteredSpecies === 'Alien'}
+          >
+            Alien
+          </button>
+          <button
+            className={
+              filteredSpecies === 'all'
+                ? 'Optionbox__optionsbutton active'
+                : 'Optionbox__optionsbutton'
+            }
+            onClick={() => setFilteredSpecies('all')}
+            // disabled={filteredSpecies === 'all'}
+          >
+            All
+          </button>
+          <button className="Optionbox__optionsbutton">Random Character</button>
         </div>
       )}
     </div>
   )
 }
+
+/* {
+              isActive
+                ? 'Optionbox__optionsbutton'
+                : 'Optionbox__optionsbutton active'
+            }*/

@@ -9,7 +9,7 @@ import filterSpecies from '../services/filterSpecies'
 // import filterRandom from '../services/filterRandom'
 
 export default function App() {
-  const [userInput, setUserInput] = useState('')
+  const [userInput, setUserInput] = useState('blue')
   const [filteredSpecies, setFilteredSpecies] = useState('all')
   const [characters, setCharacters] = useState([])
   // const [randomCharacter, setRandomCharacter] = useState(characters)
@@ -49,13 +49,3 @@ export default function App() {
     </div>
   )
 }
-
-/*
-filter(character =>
-            character.name.toLowerCase().includes(userInput.toLowerCase())
-          )
-
-          character =>
-              filteredSpecies === 'all' || character.species === filteredSpecies
-          )
-          */

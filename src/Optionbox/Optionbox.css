@@ -13,4 +13,19 @@
 
 .Optionbox__options {
   display: grid;
+  gap: 5px;
+  color: white;
+  padding: 15px;
+  background-color: cadetblue;
+  margin: 0 5px;
+}
+
+.Optionbox__optionsbutton {
+  padding: 5px;
+  border: none;
+  background-color: cornsilk;
+}
+
+.active {
+  background-color: lightblue;
 }
