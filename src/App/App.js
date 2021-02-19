@@ -9,10 +9,10 @@ import filterSpecies from '../services/filterSpecies'
 // import filterRandom from '../services/filterRandom'
 
 export default function App() {
-  const [userInput, setUserInput] = useState('blue')
+  const [userInput, setUserInput] = useState('')
   const [filteredSpecies, setFilteredSpecies] = useState('all')
   const [characters, setCharacters] = useState([])
-  // const [randomCharacter, setRandomCharacter] = useState(characters)
+  const [randomCharacter, setRandomCharacter] = useState()
 
   useEffect(() => {
     getAllCharacters({
@@ -29,12 +29,15 @@ export default function App() {
         setUserInput={setUserInput}
         filteredSpecies={filteredSpecies}
         setFilteredSpecies={setFilteredSpecies}
+        randomCharacter={characters}
+        setRandomCharacter={setRandomCharacter}
       />
       <main className="Content">
         {characters
+          // .filter(filterRandom(characters, randomCharacter))
+          .filter((character, index) => randomCharacter === index)
           .filter(liveSearch(userInput))
           .filter(filterSpecies(filteredSpecies))
-          // .filter(filterRandom(randomCharacter))
           .map(({ id, name, species, image, origin, location }) => (
             <Card
               key={id}

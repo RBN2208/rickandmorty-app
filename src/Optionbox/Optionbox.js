@@ -1,15 +1,16 @@
 import './Optionbox.css'
 import React, { useState } from 'react'
 import Searchbar from '../Searchbar/Searchbar'
+// import filterRandom from '../services/filterRandom'
 
 export default function Optionbox({
   userInput,
   setUserInput,
   filteredSpecies,
   setFilteredSpecies,
+  setRandomCharacter,
 }) {
   const [isOptionsBoxVisible, setIsOptionsBoxVisible] = useState(false)
-  // const [isActive, setIsActive] = useState(false)
 
   return (
     <div className="Optionbox">
@@ -33,10 +34,7 @@ export default function Optionbox({
                 ? 'Optionbox__optionsbutton active'
                 : 'Optionbox__optionsbutton'
             }
-            onClick={
-              () => setFilteredSpecies('Human') // , setIsActive(!isActive))
-            }
-            // disabled={filteredSpecies === 'Human'}
+            onClick={() => setFilteredSpecies('Human')}
           >
             Humans
           </button>
@@ -47,7 +45,6 @@ export default function Optionbox({
                 : 'Optionbox__optionsbutton'
             }
             onClick={() => setFilteredSpecies('Alien')}
-            // disabled={filteredSpecies === 'Alien'}
           >
             Alien
           </button>
@@ -58,11 +55,15 @@ export default function Optionbox({
                 : 'Optionbox__optionsbutton'
             }
             onClick={() => setFilteredSpecies('all')}
-            // disabled={filteredSpecies === 'all'}
           >
             All
           </button>
-          <button className="Optionbox__optionsbutton">Random Character</button>
+          <button
+            className="Optionbox__optionsbutton"
+            onClick={() => setRandomCharacter(1)}
+          >
+            Random Character
+          </button>
         </div>
       )}
     </div>
