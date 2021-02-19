@@ -56,11 +56,3 @@ export default function Optionbox({
     </div>
   )
 }
-/*
-function liveSearch(searchedValue) {
-  const filterSearch = characters.filter(character =>
-    character.name.toLowerCase().includes(searchedValue.toLowerCase())
-  )
-  setCharacters(filterSearch)
-}
-*/
