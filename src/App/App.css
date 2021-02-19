@@ -1,6 +1,6 @@
 .App {
   display: grid;
-  grid-template-rows: 110px auto;
+  grid-template-rows: 110px max-content;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -9,8 +9,9 @@
 }
 
 .Content {
-  padding: 15px;
   display: grid;
   gap: 15px;
+  padding: 15px;
   overflow-y: scroll;
+  grid-auto-rows: max-content;
 }

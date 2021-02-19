@@ -1,5 +1,6 @@
 .Optionbox {
   display: grid;
+  height: max-content;
 }
 
 .Optionbox__button {

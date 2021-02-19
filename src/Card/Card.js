@@ -6,22 +6,24 @@ export default function Card({ name, species, image, origin, location }) {
 
   return (
     <section className="Card">
-      <h2>
-        {species === 'Human' ? '👤' : '👽'}
-        {name}
-      </h2>
-      <img className="Card__img" src={image} alt="" />
+      {/*  <h2>
+          {species === 'Human' ? '👤' : '👽'}
+          {name}
+        </h2>*/}
       <button
         className="Card__button"
         onClick={() => {
           setIsTextVisible(!isTextVisible)
         }}
       >
-        {isTextVisible ? 'Show less Details' : 'Show more Details'}
+        {species === 'Human' ? '👤' : '👽'}
+        {name}
       </button>
 
       {isTextVisible && (
         <div className="Card__infobox scale-up-ver-top">
+          <img className="Card__img" src={image} alt="" />
+
           <p>
             <span className="Card__infobox--top">Origin:</span> {origin}
             <br />
