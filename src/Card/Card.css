@@ -2,10 +2,8 @@
   display: grid;
   gap: 20px;
   justify-items: center;
-  padding: 15px;
-  background-color: cornflowerblue;
-  box-shadow: 3px 4px 9px black;
   text-align: center;
+  height: max-content;
 }
 
 .Card__subinfo {
@@ -26,9 +24,13 @@
   color: white;
   border: 1px solid white;
   box-shadow: 3px 5px 10px black;
+  width: 100%;
 }
 
 .Card__infobox {
+  display: grid;
+  gap: 10px;
+  justify-items: center;
   background: azure;
   box-shadow: 3px 4px 10px black;
   border-radius: 10px;
