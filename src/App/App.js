@@ -6,11 +6,13 @@ import { useState, useEffect } from 'react'
 import getAllCharacters from '../services/getAllCharacters'
 import liveSearch from '../services/liveSearch'
 import filterSpecies from '../services/filterSpecies'
+// import filterRandom from '../services/filterRandom'
 
 export default function App() {
   const [userInput, setUserInput] = useState('')
   const [filteredSpecies, setFilteredSpecies] = useState('all')
   const [characters, setCharacters] = useState([])
+  // const [randomCharacter, setRandomCharacter] = useState(characters)
 
   useEffect(() => {
     getAllCharacters({
@@ -32,6 +34,7 @@ export default function App() {
         {characters
           .filter(liveSearch(userInput))
           .filter(filterSpecies(filteredSpecies))
+          // .filter(filterRandom(randomCharacter))
           .map(({ id, name, species, image, origin, location }) => (
             <Card
               key={id}
