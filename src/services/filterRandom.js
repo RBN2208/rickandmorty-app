@@ -1,11 +1,11 @@
-export default function filterRandom(characters, randomCharacter) {
-  const randomNumber = Math.floor(Math.random() * characters.length)
-  if (randomCharacter === true)
-    return (character, index) => randomNumber === index
+export default function filterRandom({ characters, index }) {
+  const scheisse = characters.filter(
+    Math.floor(Math.random() * characters.length - 1)
+  )
+  return scheisse
 }
 
-// randomCharacter === 'all' || character.species === randomCharacter
-// if true alle ausgeben
+//
 
 /* 
 export default function filterRandom(characters, setRandomCharacter) {

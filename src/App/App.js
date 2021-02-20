@@ -6,13 +6,12 @@ import { useState, useEffect } from 'react'
 import getAllCharacters from '../services/getAllCharacters'
 import liveSearch from '../services/liveSearch'
 import filterSpecies from '../services/filterSpecies'
-// import filterRandom from '../services/filterRandom'
 
 export default function App() {
   const [userInput, setUserInput] = useState('')
   const [filteredSpecies, setFilteredSpecies] = useState('all')
   const [characters, setCharacters] = useState([])
-  const [randomCharacter, setRandomCharacter] = useState()
+  const [randomCharacter, setRandomCharacter] = useState('all')
 
   useEffect(() => {
     getAllCharacters({
@@ -20,6 +19,10 @@ export default function App() {
       setCharacters,
     })
   }, [])
+
+  function Random(characters) {
+    characters(Math.floor(Math.random() * characters.length - 1))
+  }
 
   return (
     <div className="App">
@@ -29,12 +32,12 @@ export default function App() {
         setUserInput={setUserInput}
         filteredSpecies={filteredSpecies}
         setFilteredSpecies={setFilteredSpecies}
-        randomCharacter={characters}
-        setRandomCharacter={setRandomCharacter}
+        randomCharacter={randomCharacter}
+        setRandomCharacter={Random}
       />
       <main className="Content">
         {characters
-          // .filter(filterRandom(characters, randomCharacter))
+          // .filter(filterRandom(characters))
           .filter((character, index) => randomCharacter === index)
           .filter(liveSearch(userInput))
           .filter(filterSpecies(filteredSpecies))
