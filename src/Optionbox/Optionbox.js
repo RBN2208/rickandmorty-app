@@ -1,6 +1,7 @@
 import './Optionbox.css'
 import React, { useState } from 'react'
 import Searchbar from '../Searchbar/Searchbar'
+import filterRandom from '../services/filterRandom'
 
 export default function Optionbox({
   userInput,
@@ -8,7 +9,9 @@ export default function Optionbox({
   filteredSpecies,
   setFilteredSpecies,
   setRandomCharacter,
-  randomChar,
+  randomCharacter,
+  characters,
+  randomIndex,
 }) {
   const [isOptionsBoxVisible, setIsOptionsBoxVisible] = useState(false)
 
@@ -61,7 +64,10 @@ export default function Optionbox({
           Random Character
           <button
             className="Optionbox__optionsbutton"
-            onClick={() => setRandomCharacter()}
+            onClick={() => {
+              setRandomCharacter(!randomCharacter)
+              randomIndex(filterRandom(characters))
+            }}
           >
             Random
           </button>

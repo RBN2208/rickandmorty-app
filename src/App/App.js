@@ -11,7 +11,8 @@ export default function App() {
   const [userInput, setUserInput] = useState('')
   const [filteredSpecies, setFilteredSpecies] = useState('all')
   const [characters, setCharacters] = useState([])
-  const [randomCharacter, setRandomCharacter] = useState('all')
+  const [randomCharacter, setRandomCharacter] = useState(false)
+  const [randomIndex, setRandomIndex] = useState('')
 
   useEffect(() => {
     getAllCharacters({
@@ -20,38 +21,45 @@ export default function App() {
     })
   }, [])
 
-  function Random(characters) {
-    characters(Math.floor(Math.random() * characters.length - 1))
-  }
-
   return (
-    <div className="App">
-      <Appheader />
-      <Optionbox
-        userInput={userInput}
-        setUserInput={setUserInput}
-        filteredSpecies={filteredSpecies}
-        setFilteredSpecies={setFilteredSpecies}
-        randomCharacter={randomCharacter}
-        setRandomCharacter={Random}
-      />
-      <main className="Content">
-        {characters
-          // .filter(filterRandom(characters))
-          .filter((character, index) => randomCharacter === index)
-          .filter(liveSearch(userInput))
-          .filter(filterSpecies(filteredSpecies))
-          .map(({ id, name, species, image, origin, location }) => (
-            <Card
-              key={id}
-              name={name}
-              species={species}
-              image={image}
-              origin={origin.name}
-              location={location.name}
-            />
-          ))}
-      </main>
-    </div>
+    <>
+      <div className="App">
+        <Appheader />
+        <Optionbox
+          userInput={userInput}
+          setUserInput={setUserInput}
+          filteredSpecies={filteredSpecies}
+          setFilteredSpecies={setFilteredSpecies}
+          randomCharacter={randomCharacter}
+          setRandomCharacter={setRandomCharacter}
+          characters={characters}
+          randomIndex={setRandomIndex}
+        />
+        <main className="Content">
+          {characters
+            .filter(liveSearch(userInput))
+            .filter(filterSpecies(filteredSpecies))
+            .filter(character =>
+              randomCharacter ? character.id === randomIndex : character
+            ) // warum nicht mit &&
+            .map(({ id, name, species, image, origin, location }) => (
+              <Card
+                key={id}
+                name={name}
+                species={species}
+                image={image}
+                origin={origin.name}
+                location={location.name}
+              />
+            ))}
+        </main>
+      </div>
+    </>
   )
 }
+
+/*<button onClick={() => filterRandom(characters)}>Random!</button>
+
+? character.id === filterRandom(characters)
+                : character
+*/
