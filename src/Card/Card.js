@@ -1,8 +1,8 @@
 import './Card.css'
-import React from 'react'
+import React, { useState } from 'react'
 
 export default function Card({ name, species, image, origin, location }) {
-  const [isTextVisible, setIsTextVisible] = React.useState(false)
+  const [isTextVisible, setIsTextVisible] = useState(false)
 
   return (
     <section className="Card">

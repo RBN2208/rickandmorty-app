@@ -22,44 +22,37 @@ export default function App() {
   }, [])
 
   return (
-    <>
-      <div className="App">
-        <Appheader />
-        <Optionbox
-          userInput={userInput}
-          setUserInput={setUserInput}
-          filteredSpecies={filteredSpecies}
-          setFilteredSpecies={setFilteredSpecies}
-          randomCharacter={randomCharacter}
-          setRandomCharacter={setRandomCharacter}
-          characters={characters}
-          randomIndex={setRandomIndex}
-        />
-        <main className="Content">
-          {characters
-            .filter(liveSearch(userInput))
-            .filter(filterSpecies(filteredSpecies))
-            .filter(character =>
-              randomCharacter ? character.id === randomIndex : character
-            ) // warum nicht mit &&
-            .map(({ id, name, species, image, origin, location }) => (
-              <Card
-                key={id}
-                name={name}
-                species={species}
-                image={image}
-                origin={origin.name}
-                location={location.name}
-              />
-            ))}
-        </main>
-      </div>
-    </>
+    <div className="App">
+      <Appheader />
+      <Optionbox
+        characters={characters}
+        userInput={userInput}
+        setUserInput={setUserInput}
+        filteredSpecies={filteredSpecies}
+        setFilteredSpecies={setFilteredSpecies}
+        randomCharacter={randomCharacter}
+        setRandomCharacter={setRandomCharacter}
+        randomIndex={setRandomIndex}
+      />
+      <main className="Content">
+        {characters
+          .filter(liveSearch(userInput))
+          .filter(filterSpecies(filteredSpecies))
+          .filter(
+            character =>
+              randomCharacter ? character.id === randomIndex : character // wenn true, dann char gleich id, else nur characters
+          ) // warum nicht mit &&
+          .map(({ id, name, species, image, origin, location }) => (
+            <Card
+              key={id}
+              name={name}
+              species={species}
+              image={image}
+              origin={origin.name}
+              location={location.name}
+            />
+          ))}
+      </main>
+    </div>
   )
 }
-
-/*<button onClick={() => filterRandom(characters)}>Random!</button>
-
-? character.id === filterRandom(characters)
-                : character
-*/
