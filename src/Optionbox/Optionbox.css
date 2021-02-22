@@ -13,15 +13,29 @@
 
 .Optionbox__options {
   display: grid;
-  gap: 5px;
+  place-content: center;
+  gap: 10px;
   color: white;
-  padding: 15px;
   background-color: cadetblue;
   margin: 0 5px;
+  padding: 10px 0;
+}
+
+.Optionbox__box--one {
+  display: flex;
+  gap: 10px;
+}
+.Optionbox__box--two {
+  display: flex;
+  gap: 10px;
+}
+.Optionbox__box--three {
+  display: flex;
+  gap: 10px;
 }
 
 .Optionbox__optionsbutton {
-  padding: 5px;
+  padding: 5px 15px;
   border: none;
   background-color: cornsilk;
 }
