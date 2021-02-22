@@ -65,7 +65,7 @@ export default function Optionbox({
           <button
             className="Optionbox__optionsbutton"
             onClick={() => {
-              setRandomCharacter(!randomCharacter) // switch true/false
+              setRandomCharacter(!!randomCharacter) // switch true/false
               randomIndex(randomNumber(characters))
             }}
           >
