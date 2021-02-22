@@ -4,8 +4,6 @@ import './App.css'
 import Optionbox from '../Optionbox/Optionbox'
 import { useState, useEffect } from 'react'
 import getAllCharacters from '../services/getAllCharacters'
-import liveSearch from '../services/liveSearch'
-import filterSpecies from '../services/filterSpecies'
 
 export default function App() {
   const [userInput, setUserInput] = useState('blue')
@@ -36,12 +34,14 @@ export default function App() {
       />
       <main className="Content">
         {characters
-          .filter(liveSearch(userInput))
-          .filter(filterSpecies(filteredSpecies))
+          .filter(character =>
+            character.name.toLowerCase().includes(userInput.toLowerCase())
+          )
           .filter(
             character =>
-              randomCharacter ? character.id === randomIndex : character // wenn true, dann char gleich id, else nur characters
-          ) // warum nicht mit &&
+              filteredSpecies === 'all' || character.species === filteredSpecies
+          )
+          .filter(character => !randomCharacter || character.id === randomIndex)
           .map(({ id, name, species, image, origin, location }) => (
             <Card
               key={id}
