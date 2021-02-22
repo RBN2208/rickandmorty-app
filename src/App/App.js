@@ -6,13 +6,13 @@ import { useState, useEffect } from 'react'
 import getAllCharacters from '../services/getAllCharacters'
 import liveSearch from '../services/liveSearch'
 import filterSpecies from '../services/filterSpecies'
-// import filterRandom from '../services/filterRandom'
 
 export default function App() {
-  const [userInput, setUserInput] = useState('blue')
+  const [userInput, setUserInput] = useState('')
   const [filteredSpecies, setFilteredSpecies] = useState('all')
   const [characters, setCharacters] = useState([])
-  // const [randomCharacter, setRandomCharacter] = useState(characters)
+  const [randomCharacter, setRandomCharacter] = useState(false)
+  const [randomIndex, setRandomIndex] = useState('')
 
   useEffect(() => {
     getAllCharacters({
@@ -25,16 +25,23 @@ export default function App() {
     <div className="App">
       <Appheader />
       <Optionbox
+        characters={characters}
         userInput={userInput}
         setUserInput={setUserInput}
         filteredSpecies={filteredSpecies}
         setFilteredSpecies={setFilteredSpecies}
+        randomCharacter={randomCharacter}
+        setRandomCharacter={setRandomCharacter}
+        randomIndex={setRandomIndex}
       />
       <main className="Content">
         {characters
           .filter(liveSearch(userInput))
           .filter(filterSpecies(filteredSpecies))
-          // .filter(filterRandom(randomCharacter))
+          .filter(
+            character =>
+              randomCharacter ? character.id === randomIndex : character // wenn true, dann char gleich id, else nur characters
+          ) // warum nicht mit &&
           .map(({ id, name, species, image, origin, location }) => (
             <Card
               key={id}

@@ -1,15 +1,19 @@
 import './Optionbox.css'
 import React, { useState } from 'react'
 import Searchbar from '../Searchbar/Searchbar'
+import randomNumber from '../services/randomNumber'
 
 export default function Optionbox({
   userInput,
   setUserInput,
   filteredSpecies,
   setFilteredSpecies,
+  setRandomCharacter,
+  randomCharacter,
+  characters,
+  randomIndex,
 }) {
   const [isOptionsBoxVisible, setIsOptionsBoxVisible] = useState(false)
-  // const [isActive, setIsActive] = useState(false)
 
   return (
     <div className="Optionbox">
@@ -33,10 +37,7 @@ export default function Optionbox({
                 ? 'Optionbox__optionsbutton active'
                 : 'Optionbox__optionsbutton'
             }
-            onClick={
-              () => setFilteredSpecies('Human') // , setIsActive(!isActive))
-            }
-            // disabled={filteredSpecies === 'Human'}
+            onClick={() => setFilteredSpecies('Human')}
           >
             Humans
           </button>
@@ -47,7 +48,6 @@ export default function Optionbox({
                 : 'Optionbox__optionsbutton'
             }
             onClick={() => setFilteredSpecies('Alien')}
-            // disabled={filteredSpecies === 'Alien'}
           >
             Alien
           </button>
@@ -58,19 +58,21 @@ export default function Optionbox({
                 : 'Optionbox__optionsbutton'
             }
             onClick={() => setFilteredSpecies('all')}
-            // disabled={filteredSpecies === 'all'}
           >
             All
           </button>
-          <button className="Optionbox__optionsbutton">Random Character</button>
+          Random Character
+          <button
+            className="Optionbox__optionsbutton"
+            onClick={() => {
+              setRandomCharacter(!!randomCharacter) // switch true/false
+              randomIndex(randomNumber(characters))
+            }}
+          >
+            Random
+          </button>
         </div>
       )}
     </div>
   )
 }
-
-/* {
-              isActive
-                ? 'Optionbox__optionsbutton'
-                : 'Optionbox__optionsbutton active'
-            }*/
